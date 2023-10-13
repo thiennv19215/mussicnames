@@ -56,11 +56,6 @@ const app = {
     audio.src = songs.path;
     progress.value = this.valueprogram;
     document.title = songs.name;
-
-
-    audio.onloadedmetadata = function () {
-        console.log('e');
-    };
   },
 
   handleeven: function () {
