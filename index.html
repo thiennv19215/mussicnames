@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>music</title>
-    <link rel="icon" type="image/png" href="http://stc.id.nixcdn.com/v11/images/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
@@ -100,57 +99,23 @@
 
       <!-- Playlist -->
       <div class="playlist">
-        <!-- <div class="song">
-          <div
-            class="thumb"
-            style="
-              background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg');
-            "
-          ></div>
-          <div class="body">
-            <h3 class="title">Music name</h3>
-            <p class="author">Singer</p>
-          </div>
-          <div class="option">
-            <i class="fas fa-ellipsis-h"></i>
-          </div>
-        </div> -->
-        <!-- <div class="song">
-          <div
-            class="thumb"
-            style="
-              background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg');
-            "
-          ></div>
-          <div class="body">
-            <h3 class="title">Music name</h3>
-            <p class="author">Singer</p>
-          </div>
-          <div class="option">
-            <i class="fas fa-ellipsis-h"></i>
-          </div>
-        </div> -->
-        <!-- <div class="song">
-          <div
-            class="thumb"
-            style="
-              background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg');
-            "
-          ></div>
-          <div class="body">
-            <h3 class="title">Music name</h3>
-            <p class="author">Singer</p>
-          </div>
-          <div class="option">
-            <i class="fas fa-ellipsis-h"></i>
-          </div>
-        </div> -->
-      </div>
 
       <div class="footer">
         @ make delopver by Nguyễn Thiện : October 11 2023
       </div>
     </div>
+    <div class="notifications"></div>
   </body>
   <script type="module" src="main.js"></script>
+  <script>
+       window.addEventListener('beforeunload', function (e) {
+            e.preventDefault(); // Ngăn tải lại trang ngay lập tức
+
+            // Hiển thị hộp thoại xác nhận
+            var confirmationMessage = 'Dữ liệu bạn đã nhập có thể bị mất. Bạn có chắc chắn muốn rời khỏi trang này?';
+            e.returnValue = confirmationMessage; // Hiển thị thông báo xác nhận
+
+            // Bạn có thể thay đổi nội dung của thông báo xác nhận ở đây
+        });
+  </script>
 </html>

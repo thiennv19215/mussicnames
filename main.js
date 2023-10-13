@@ -10,8 +10,10 @@ const player = $(".player");
 const btnrepeat = $(".btn-repeat");
 const btnrandom = $(".btn-random");
 const playlist = $(".playlist");
-const toasty = document.querySelector(".toasty");
-
+let type = "success";
+let icon = "fa-solid fa-circle-check";
+let title = "Success";
+let text = "This is a success toast.";
 const tableswith = $(".tableswith");
 const data = datas;
 const app = {
@@ -87,6 +89,7 @@ const app = {
       } else {
         audio.pause();
       }
+
     };
 
     //update time
@@ -104,6 +107,13 @@ const app = {
       cdtthums.pause();
       player.classList.remove("playing");
       _this.iswave();
+
+      _this.createToast(
+        (type = "error"),
+        (icon = "fa-solid fa-circle-exclamation"),
+        (title = "Nhạc Đã Tắt !"),
+        (text = "Tạm biệt ! sê you")
+      );
     };
     //inplayting
     audio.onplay = function () {
@@ -112,14 +122,34 @@ const app = {
       player.classList.add("playing");
       cd.style.width = "200px";
       _this.iswave(_this.indexsong);
+
+      _this.createToast(
+        (type = "success"),
+        (icon = "fa-solid fa-circle-check"),
+        (title = "Đang Phát"),
+        (text = "chúc bạn nghe nhạc vui vẻ")
+      );
     };
     //btn next
     btnnext.onclick = function () {
       _this.nextsong();
+
+      _this.createToast(
+        (type = "success"),
+        (icon = "fa-solid fa-circle-check"),
+        (title = "Chuyển Bài Thành công"),
+        (text = "chúc bạn nghe nhạc vui vẻ")
+      );
     };
     //btn next
     $(".btn-prev").onclick = function () {
       _this.prevsong();
+      _this.createToast(
+        (type = "success"),
+        (icon = "fa-solid fa-circle-check"),
+        (title = "Chuyển Bài Thành công"),
+        (text = "chúc bạn nghe nhạc vui vẻ")
+      );
     };
 
     // khi tua oninput
@@ -143,6 +173,22 @@ const app = {
       this.classList.toggle("active");
       _this.israndom = false;
       btnrandom.classList.remove("active");
+
+      if (_this.isrepet) {
+        _this.createToast(
+          (type = "success"),
+          (icon = "fa-solid fa-circle-check"),
+          (title = "Bài Hát Lặp LẠi"),
+          (text = "chúc bạn nghe nhạc vui vẻ")
+        );
+      } else {
+        _this.createToast(
+          (type = "error"),
+          (icon = "fa-solid fa-circle-check"),
+          (title = "Tắt Lặp Lại"),
+          (text = "chúc bạn nghe nhạc vui vẻ")
+        );
+      }
     };
     //when click song
     playlist.onclick = function (e) {
@@ -155,10 +201,6 @@ const app = {
           _this.rendersong();
           audio.play();
         }
-
-        if (e.target.closest(".option")) {
-          console.log("bạn đã bấm vào nút 3 chấm");
-        }
       }
     };
 
@@ -168,6 +210,19 @@ const app = {
       _this.isrepet = false;
       this.classList.toggle("active", _this.israndom);
       btnrepeat.classList.remove("active");
+      _this.israndom
+        ? _this.createToast(
+            (type = "success"),
+            (icon = "fa-solid fa-circle-check"),
+            (title = "Phát Ngẫu Nhiên"),
+            (text = "chúc bạn nghe nhạc vui vẻ")
+          )
+        : _this.createToast(
+            (type = "error"),
+            (icon = "fa-solid fa-circle-check"),
+            (title = "Phát Ngẫu Nhiên Tắt"),
+            (text = "chúc bạn nghe nhạc vui vẻ")
+          );
     });
 
     //tableswith
@@ -228,10 +283,30 @@ const app = {
     } while (randomindex === this.indexsong);
     this.indexsong = randomindex;
     this.render();
+
     this.rendersong();
     audio.play();
   },
+  createToast: function (type, icon, title, text) {
+    {
+      console.log("đã chạy");
+      const notifications = $(".notifications");
+      let newToast = document.createElement("div");
+      newToast.innerHTML = `
+          <div class="toast ${type}">
+              <i class="${icon}"></i>
+              <div class="content">
+                  <div class="title">${title}</div>
+                  <span>${text}</span>
+              </div>
+              <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
+          </div>`;
+      notifications.appendChild(newToast);
+      newToast.timeOut = setTimeout(() => newToast.remove(), 5000);
+    }
+  },
 
+  //toast
   iswave: function (s) {
     let wave = $$(".wave");
     wave.forEach((item) => {
@@ -239,7 +314,7 @@ const app = {
     });
     if (this.isplaying) {
       wave[s].classList.add("activesong");
-    } 
+    }
   },
   start: function () {
     this.render();
