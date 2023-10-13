@@ -302,7 +302,7 @@ const app = {
               <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
           </div>`;
       notifications.appendChild(newToast);
-      newToast.timeOut = setTimeout(() => newToast.remove(), 5000);
+      newToast.timeOut = setTimeout(() => newToast.remove(), 3000);
     }
   },
 
