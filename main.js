@@ -289,7 +289,6 @@ const app = {
   },
   createToast: function (type, icon, title, text) {
     {
-      console.log("đã chạy");
       const notifications = $(".notifications");
       let newToast = document.createElement("div");
       newToast.innerHTML = `
@@ -302,7 +301,8 @@ const app = {
               <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
           </div>`;
       notifications.appendChild(newToast);
-      newToast.timeOut = setTimeout(() => newToast.remove(), 3000);
+      newToast.timeOut = setTimeout(() => newToast.remove(), 5000);
+      
     }
   },
 

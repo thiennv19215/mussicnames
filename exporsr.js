@@ -24,12 +24,6 @@ export const datas = [
       img: "/assets/img/gaclaiaulo.jpg",
     },
     {
-      name: "MỜI TRẦU",
-      sing: "MASEW",
-      path: "/assets/mp3/y2meta.com - MASEW - MỜI TRẦU _ Instrumental (128 kbps).mp3",
-      img: "/assets/img/moitrau.jpg",
-    },
-    {
       name: "TÂM SỰ TUỔI 30",
       sing: "TRỊNH THĂNG BÌNH",
       path: "/assets/mp3/y2meta.com - TÂM SỰ TUỔI 30 _ TRỊNH THĂNG BÌNH _ OST ÔNG NGOẠI TUỔI 30 (128 kbps).mp3",
